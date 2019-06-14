@@ -3,7 +3,7 @@ package gui;
 import javax.swing.JFrame;
 
 /**
- * The frame for the window to enter data for a new patient, and cause the creation of the patient.
+ * The frame for the window to enter data for a new Doctor, and cause the creation of the Doctor.
  */
 public class DoctorAddFrame extends JFrame {
     /** The standard width for the frame. */
@@ -13,7 +13,7 @@ public class DoctorAddFrame extends JFrame {
     public static final int DEFAULT_HEIGHT = 200;
 
     /**
-     * Create the frame to add a patient.
+     * Create the frame to add a Doctor.
      */
     public DoctorAddFrame() {
         setTitle("Doctor Addition");

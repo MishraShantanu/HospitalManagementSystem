@@ -15,14 +15,14 @@ import containers.DoctorMapAccess;
 import containers.PatientMapAccess;
 
 /**
- * The panel for the operations involving patients. There is a button to add a new patient, a field
- * to access a specific patient, a button to list all patients, and an exit button to hide the
+ * The panel for the operations involving Doctors. There is a button to add a new doctor, a field
+ * to access a specific doctor, a button to list all doctor, and an exit button to hide the
  * window with this frame.
  */
 public class DoctorOpsPanel extends JPanel {
     /**
-     * Create the panel for the operations involving patients. There is a button to add a new
-     * patient, a field to access a specific patient, a button to list all patients, and an exit
+     * Create the panel for the operations involving doctors. There is a button to add a new
+     * doctor, a field to access a specific doctor, a button to list all doctors, and an exit
      * button to hide the window with this frame.
      */
     public DoctorOpsPanel() {

@@ -8,8 +8,8 @@ import entities.Doctor;
 import entities.Patient;
 
 /**
- * The frame for the window to display the information for a patient, and accept operations on the
- * patient.
+ * The frame for the window to display the information for a Doctor, and accept operations on the
+ * Doctor.
  */
 public class DoctorFrame extends JFrame {
     /** The standard width for the frame. */
@@ -19,10 +19,10 @@ public class DoctorFrame extends JFrame {
     public static final int DEFAULT_HEIGHT = 400;
 
     /**
-     * Create the frame to display the information for a patient.
+     * Create the frame to display the information for a Doctor.
      *
-     * @param docName the health number of the patient
-     * @precond healthNum is the health number of a patient
+     * @param docName the name of the Doctor
+     * @precond docName is the name of Doctor
      */
     public DoctorFrame(String docName) {
         Doctor doctor = DoctorMapAccess.dictionary().get(docName);

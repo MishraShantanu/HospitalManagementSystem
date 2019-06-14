@@ -16,7 +16,7 @@ import commands.AddPatient;
 import commands.NewDoctor;
 
 /**
- * The panel to obtain data for the creation of a patient, and to cause the patient to be created.
+ * The panel to obtain data for the creation of a Doctor, and to cause the Doctor to be created.
  */
 public class DoctorAddPanel extends JPanel {
     /* Declare the components of the panel needed by inner classes. */
@@ -27,17 +27,17 @@ public class DoctorAddPanel extends JPanel {
     JTextArea error = null;
 
     /**
-     * A panel for the entry of the name of a new patient.
+     * A panel for the entry of the name of a new Doctor.
      */
     ValueEntryPanel namePanel;
 
     /**
-     * A panel for the entry of the health number of a new patient.
+     * A panel for the entry of the type of Doctor(Surgeon or not).
      */
     ValueEntryPanel typePanel;
 
     /**
-     * Create the panel to obtain data for the creation of a patient, and to cause the patient to be
+     * Create the panel to obtain data for the creation of a Doctor, and to cause the Doctor to be
      * created.
      */
     public DoctorAddPanel() {
@@ -76,13 +76,13 @@ public class DoctorAddPanel extends JPanel {
     }
 
     /**
-     * The class listening for the press of the submit button. It accesses the name and health
-     * number entered, and uses them to add a new Patient to the system.
+     * The class listening for the press of the submit button. It accesses the name & type
+     *  entered, and uses them to add a new Doctorto the system.
      */
     private class SubmitListener implements ActionListener {
         /**
-         * When the submit button is pressed, access the name and health number entered, and use
-         * them to add a new Patient to the system.
+         * When the submit button is pressed, access the name and type, and use
+         * them to add a new Doctor to the system.
          */
         public void actionPerformed(ActionEvent event) {
             if (error != null) {

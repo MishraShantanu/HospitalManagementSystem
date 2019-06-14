@@ -18,30 +18,11 @@ import commands.CreateWard;
  * The panel to obtain input to initialize the ward, and then it will start the main system.
  */
 public class MainMenuPanel extends JPanel {
-    /**
-     * The panel for the entry of the ward's name.
-     */
-    ValueEntryPanel namePanel;
 
-    /**
-     * The panel for the entry of the label of the first bed of the ward.
-     */
-    ValueEntryPanel firstLabelPanel;
-
-    /**
-     * The panel for the entry of the label of the last bed of the ward.
-     */
-    ValueEntryPanel lastLabelPanel;
-
-    /**
-     * A panel for an error message, if an error should occur.
-     */
     JTextArea error = null;
 
     /**
-     * Create a panel with a field for the entry of the ward's name, a field for the label of the
-     * first bed, a field for the label of the last bed, and a submit button to submit the data for
-     * the creation of the ward.
+     * Create a panel with a field for the Main Menu, a field for the multiple Options Available or Exit.
      */
     public MainMenuPanel() {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));

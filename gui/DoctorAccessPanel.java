@@ -11,19 +11,19 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 /**
- * The panel for the access of a specific patient. It has a prompt label, and a text field for the
- * entry of the patient's health number. When the Enter key is pressed, the health number entered is
- * used to create a new window with the patient's data and operations on the patient.
+ * The panel for the access of a specific Doctor. It has a prompt label, and a text field for the
+ * entry of the Doctor's name. When the Enter key is pressed, the Doctor name entered is
+ * used to create a new window with the Doctor's data and operations on the Doctor.
  */
 public class DoctorAccessPanel extends JPanel {
     /**
-     * The text field for the entry of the patient's health number.
+     * The text field for the entry of the Doctor Name.
      */
     JTextField textField;
 
     /**
      * Create the panel with the prompt label and text field. If data is entered into the text field
-     * that is not a valid int value, a brief error message is entered at the front of the text
+     * that is not an empty String, a brief error message is entered at the front of the text
      * field. Otherwise, a new window is created with the patient's data and operations on the
      * patient.
      */

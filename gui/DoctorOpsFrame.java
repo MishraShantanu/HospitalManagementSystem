@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 import startup.HospitalSystem;
 
 /**
- * The frame for the window to display the operations that involve patients.
+ * The frame for the window to display the operations that involve Doctor.
  */
 public class DoctorOpsFrame extends JFrame {
     /** The standard width for the frame. */
@@ -15,7 +15,7 @@ public class DoctorOpsFrame extends JFrame {
     public static final int DEFAULT_HEIGHT = 200;
 
     /**
-     * Create the frame for the operations that involve patients.
+     * Create the frame for the operations that involve Doctor.
      */
     public DoctorOpsFrame() {
         setTitle("Doctor Operations");
@@ -25,8 +25,7 @@ public class DoctorOpsFrame extends JFrame {
     }
 
     /**
-     * A main to run the GUI version of the hospital system that only involves patient operations
-     * and the ward.
+     * A main to run the GUI version of the hospital system that only involves Doctor operations.
      */
     public static void main(String[] args) {
         HospitalSystem system = new HospitalSystem();
