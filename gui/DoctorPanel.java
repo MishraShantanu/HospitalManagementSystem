@@ -1,156 +1,172 @@
+//package gui;
+//
+//import java.awt.Component;
+//import java.awt.event.ActionEvent;
+//import java.awt.event.ActionListener;
+//import java.util.LinkedList;
+//
+//import javax.swing.*;
+//
+//import commands.DropDoctor;
+//import commands.AssignDoctor;
+//import containers.DoctorMapAccess;
+//import entities.Doctor;
+//import entities.Patient;
+//import entities.BasicDoctor;
+//import entities.Surgeon;
+//
+///**
+// * The panel to display the information for a patient, and accept operations on the patient. The
+// * panel gives the patient's name and health number. If the patient has bed in the ward, it is given
+// * and the user has the option to remove the patient from the bed. If the patient does not have a
+// * bed, a create is created for the ward information, so that the patient can be added to an empty
+// * bed. The doctors of the patient are given, and the user has the option to add another doctor or
+// * remove a doctor.
+// */
+//public class DoctorPanel extends JPanel {
+//    String docType;
+//    JTextField tField;
+//
+//    /**
+//     * Create the panel to display the patient's information and accept operations on the patient.
+//     *
+//     * @param doctor the patient whose information is to be displayed and on whom operations can be
+//     *        done
+//     */
+//    public DoctorPanel(Doctor doctor) {
+//
+//        setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));
+//        add(new JLabel("Doctor Name: "+doctor.getName()));
+//        if(doctor instanceof Surgeon){
+//            docType = "yes";
+//        }else {
+//            docType = "no";
+//        }
+//        add(new JLabel("Is Surgeon..??"+docType));
+//
+//        JButton assignP = new JButton("Assign Patient to Doctor");
+//
+//        assignP.setSize(assignP.getPreferredSize());
+//        add(assignP);
+//        assignP.setAlignmentX(Component.CENTER_ALIGNMENT);
+//        assignP.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                PatientAddFrame frame = new PatientAddFrame();
+//                frame.setLocation(300, 300);
+//                frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+//                frame.setVisible(true);
+//            }
+//        });
+//        add(Box.createVerticalGlue());
+//
+//        JLabel promt = new JLabel("Access my Patient");
+//        tField = new JTextField(10);
+//        add(promt);
+//        add(tField);
+//        tField.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                int void
+//            }
+//        });
+//        }
+//
+//
+//
+//
+//       }
+//
+//}
+
 package gui;
-
-import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.BoxLayout;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import javax.swing.JTextField;
-
-import commands.DropDoctor;
-import commands.AssignDoctor;
-import entities.Doctor;
-import entities.Patient;
-import entities.BasicDoctor;
-import entities.Surgeon;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import entities.*;
 
 /**
- * The panel to display the information for a patient, and accept operations on the patient. The
- * panel gives the patient's name and health number. If the patient has bed in the ward, it is given
- * and the user has the option to remove the patient from the bed. If the patient does not have a
- * bed, a create is created for the ward information, so that the patient can be added to an empty
- * bed. The doctors of the patient are given, and the user has the option to add another doctor or
- * remove a doctor.
+ * Doctor Panel for prompting the user for a Doctor's name, along
+ * with a prompt if the doctor is a surgeon or not
  */
 public class DoctorPanel extends JPanel {
-    /**
-     * Create the panel to display the patient's information and accept operations on the patient.
-     *
-     * @param doctor the patient whose information is to be displayed and on whom operations can be
-     *        done
-     */
-    public DoctorPanel(Doctor doctor) {
-        /*
-         * The creation of the panel is placed in another method as it needs to be invoked whenever
-         * the doctor information of the patient is changed.
-         */
-        this.doctor = doctor;
-        build(doctor);
-    }
+    String isSurgeon;
+    JTextField textField;
 
-    /**
-     * Fill in the panel to display the patient's information and accept operations on the patient.
-     *
-     * @param doctor the patient whose information is to be displayed and on whom operations can be
-     *        done
-      */
-    private void build(Doctor doctor) {
+    DoctorPanel(Doctor dr) {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-        add(new JLabel("Name: " + doctor.getName()));
-
-
-
-
-
-        add(new JLabel("  ")); // blank line in the panel for spacing
-        add(new JLabel("Patients"));
-        for (BasicDoctor patient : doctor.a) {
-            JPanel p = listPatientPanel(doctor, patient);
-            add(p);
-            p.setAlignmentX(Component.LEFT_ALIGNMENT);
+        add(new JLabel("Doctor's Name:   " + dr.getName()));
+        if (dr instanceof Surgeon) {
+            isSurgeon = "YES";
         }
+        else {
+            isSurgeon = "NO";
+        }
+        add(new JLabel("Is a Surgeon?:    " + isSurgeon));
 
-        // add an empty panel to force the add doctor and exit components to the bottom
-        JPanel emptyPanel = new JPanel();
-        add(emptyPanel);
-        emptyPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
-
-        JPanel addPatientPanel = addPatientPanel(doctor);
-        add(addPatientPanel);
-        addPatientPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
-        addPatientPanel.setMaximumSize(addPatientPanel.getPreferredSize());
-
-        add(new JLabel("  ")); // blank line in the panel for spacing
-        final JButton exitButton = new JButton("Exit");
-        add(exitButton);
-        exitButton.addActionListener(new ActionListener() {
+        JButton assignPatient = new JButton("Assign Patient to Doctor");
+        assignPatient.setSize(assignPatient.getPreferredSize());
+        add(assignPatient);
+        assignPatient.setAlignmentX(Component.LEFT_ALIGNMENT);
+        assignPatient.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                exitButton.getTopLevelAncestor().setVisible(false);
+                PatientAddFrame frame = new PatientAddFrame();
+                frame.setLocation(300, 300);
+                frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+                frame.setVisible(true);
             }
         });
-    }
+        add(Box.createVerticalGlue());
 
-    /**
-     * A panel to display the name of a doctor for the patient. Also, a button is provided to remove
-     * the association of this patient with the doctor.
-     *
-     * @param doctor a doctor of this patient
-     * @param patient the current patient
-     * @return the panel to display the name of the doctor, with a button to remove the
-     *         patient-doctor association
-     */
-    private JPanel listPatientPanel(final Doctor doctor, final Patient patient) {
-        JPanel patientPanel = new JPanel();
-        patientPanel.add(new JLabel("  "));
-        patientPanel.add(new JLabel(patient.getName()));
-        JButton removeButton = new JButton("remove");
-        patientPanel.add(removeButton);
-        removeButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                DropDoctor dropAssoc = new DropDoctor();
-                dropAssoc.dropAssociation(doctor.getName(), patient.getHealthNumber());
-                if (dropAssoc.wasSuccessful()) {
-                    // recreate the panel as it has changed
-                    removeAll();
-                    build(doctor);
-                    revalidate();
-                } else {
-                    JOptionPane.showMessageDialog(DoctorPanel.this, dropAssoc.getErrorMessage());
-                }
-            }
-        });
-        return patientPanel;
-    }
-
-    /**
-     * A panel to add a doctor-patient association for this doctor. The panel as a prompt to enter
-     * the doctor's name, and a field to enter the name.
-     *
-     * @param patient the current patient
-     * @return a panel to associate a new doctor with this patient
-     */
-    private JPanel addPatientPanel(final Patient patient) {
-        JPanel addPatientPanel = new JPanel();
-        addPatientPanel.add(new JLabel("Add Patient"));
-        final JTextField textField = new JTextField(10);
-        addPatientPanel.add(textField);
+        JLabel prompt = new JLabel("Access my Patient");
+        textField = new JTextField(10);
+        add(prompt);
+        add(textField);
         textField.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                String input = textField.getText();
+                int number = 0;
                 try {
-                    int healthNum = Integer.parseInt(input);
-                } catch (NumberFormatException e){
-                revalidate();
-                return;
-                 }
-                AssignDoctor addAssoc = new AssignDoctor();
-                addAssoc.assignDoctor(doctorName, patient.getHealthNumber());
-                if (addAssoc.wasSuccessful()) {
-                    // recreate the panel as it has changed
-                    removeAll();
-                    build(doctor);
-                    revalidate();
-                } else {
-                    JOptionPane.showMessageDialog(DoctorPanel.this, addAssoc.getErrorMessage());
+                    number = Integer.parseInt(textField.getText());
                 }
+                catch (NumberFormatException e) {
+                    JTextArea error = new JTextArea("ENTER AN INTEGER!");
+                    error.setMaximumSize(error.getPreferredSize());
+                    add(error);
+                    error.setAlignmentX(Component.CENTER_ALIGNMENT);
+                    add(Box.createVerticalGlue());
+                    revalidate();
+                    return;
+                }
+                if (dr.hasPatient(number)) {
+                    PatientFrame patient = new PatientFrame(number);
+                    patient.setVisible(true);
+                }
+                else {
+                    JTextArea error = new JTextArea("Patient Doesn't Exist");
+                    error.setMaximumSize(error.getPreferredSize());
+                    add(error);
+                    error.setAlignmentX(Component.CENTER_ALIGNMENT);
+                    add(Box.createVerticalGlue());
+                    revalidate();
+                }
+            }});
+        Box.createVerticalGlue();
+
+        JButton removePatient = new JButton("Unassign Patient");
+        removePatient.setSize(assignPatient.getPreferredSize());
+        add(removePatient);
+        removePatient.setAlignmentX(Component.LEFT_ALIGNMENT);
+        removePatient.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                PatientAddFrame frame = new PatientAddFrame();
+                frame.setLocation(300, 300);
+                frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+                frame.setVisible(true);
             }
         });
-        return addPatientPanel;
+        add(Box.createVerticalGlue());
     }
 
+
     public static final long serialVersionUID = 1;
+
 }
